@@ -19,27 +19,27 @@ const App = () => {
   const [activeModal, setActiveModal] = useState(null);
 
   const buttonVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.4, ease: "easeOut" },
-  },
-  hover: { scale: 1.05 },
-  tap: { scale: 0.95 },
-};
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      delayChildren: 0.2,   // jeda sebelum anak mulai animasi
-      staggerChildren: 0.25 // jeda antar anak
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.4, ease: "easeOut" },
     },
-  },
-};
-useEffect(() => {
+    hover: { scale: 1.05 },
+    tap: { scale: 0.95 },
+  };
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        delayChildren: 0.2, // jeda sebelum anak mulai animasi
+        staggerChildren: 0.25, // jeda antar anak
+      },
+    },
+  };
+  useEffect(() => {
     window.scrollTo({
       top: document.body.scrollHeight / 2 - window.innerHeight / 2,
       behavior: "smooth",
@@ -195,13 +195,15 @@ useEffect(() => {
                       <FaEnvelope /> <span>Email</span>
                     </motion.a>
                     <motion.a
-                      href="tel:0800123456"
-                      className="flex shine-btn items-center gap-3 py-3 px-4 bg-red-600 text-white rounded-xl shadow"
+                      href="https://wa.me/6282197085204" // ganti dengan nomor WA resmi KPU
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex shine-btn items-center gap-3 py-3 px-4 bg-green-600 text-white rounded-xl shadow"
                       variants={buttonVariants}
                       whileHover="hover"
                       whileTap="tap"
                     >
-                      <FaPhone /> <span>Call Center</span>
+                      <FaPhone /> <span>Call Center (WhatsApp)</span>
                     </motion.a>
                   </motion.div>
                 </>
@@ -219,11 +221,31 @@ useEffect(() => {
                     animate="visible"
                   >
                     {[
-                      { icon: <FaInstagram />, text: "Instagram", link: "https://www.instagram.com/kpu_kab.sekadau/" },
-                      { icon: <FaFacebook />, text: "Facebook", link: "https://www.facebook.com/kpukabupatensekadau" },
-                      { icon: <FaTiktok />, text: "Tiktok", link: "https://www.tiktok.com/@jdihkpu_sekadau" },
-                      { icon: <FaTwitter />, text: "Twitter", link: "https://x.com/SekadauKpu" },
-                      { icon: <FaYoutube />, text: "Youtube", link: "https://www.youtube.com/@kpukabupatensekadau" },
+                      {
+                        icon: <FaInstagram />,
+                        text: "Instagram",
+                        link: "https://www.instagram.com/kpu_kab.sekadau/",
+                      },
+                      {
+                        icon: <FaFacebook />,
+                        text: "Facebook",
+                        link: "https://www.facebook.com/kpukabupatensekadau",
+                      },
+                      {
+                        icon: <FaTiktok />,
+                        text: "Tiktok",
+                        link: "https://www.tiktok.com/@jdihkpu_sekadau",
+                      },
+                      {
+                        icon: <FaTwitter />,
+                        text: "Twitter",
+                        link: "https://x.com/SekadauKpu",
+                      },
+                      {
+                        icon: <FaYoutube />,
+                        text: "Youtube",
+                        link: "https://www.youtube.com/@kpukabupatensekadau",
+                      },
                     ].map((item, i) => (
                       <motion.a
                         key={i}
@@ -254,9 +276,18 @@ useEffect(() => {
                     animate="visible"
                   >
                     {[
-                      { text: "Portal JDIH", link: "https://jdih.kpu.go.id/kalbar/sekadau" },
-                      { text: "Peraturan KPU", link: "https://jdih.kpu.go.id/kalbar/sekadau/peraturan-kpu" },
-                      { text: "Undang-Undang", link: "https://jdih.kpu.go.id/kalbar/sekadau/undang-undang/" },
+                      {
+                        text: "Portal JDIH",
+                        link: "https://jdih.kpu.go.id/kalbar/sekadau",
+                      },
+                      {
+                        text: "Peraturan KPU",
+                        link: "https://jdih.kpu.go.id/kalbar/sekadau/peraturan-kpu",
+                      },
+                      {
+                        text: "Undang-Undang",
+                        link: "https://jdih.kpu.go.id/kalbar/sekadau/undang-undang/",
+                      },
                     ].map((item, i) => (
                       <motion.a
                         key={i}
