@@ -25,7 +25,7 @@
 }
 
 .shine-btn:hover::before {
-  animation: shine 0.8s ease;
+  animation: shine 1.2s ease-in-out infinite;
 }
 
 @keyframes shine {
