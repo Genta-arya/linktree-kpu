@@ -198,7 +198,7 @@ const App = () => {
                       href="https://wa.me/6282197085204" // ganti dengan nomor WA resmi KPU
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex shine-btn items-center gap-3 py-3 px-4 bg-green-600 text-white rounded-xl shadow"
+                      className="flex shine-btn items-center gap-3 py-3 px-4 bg-red-600 text-white rounded-xl shadow"
                       variants={buttonVariants}
                       whileHover="hover"
                       whileTap="tap"
