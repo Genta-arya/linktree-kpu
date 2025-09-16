@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import icon from "./assets/icon-kpu.jpeg";
 import {
@@ -39,7 +39,12 @@ const containerVariants = {
     },
   },
 };
-
+useEffect(() => {
+    window.scrollTo({
+      top: document.body.scrollHeight / 2 - window.innerHeight / 2,
+      behavior: "smooth",
+    });
+  }, []);
 
   const modalVariants = {
     hidden: { opacity: 0, scale: 0.9 },
