@@ -66,7 +66,13 @@ const App = () => {
   };
 
   const handleSendWhatsApp = () => {
-    if (!message.trim()) return toast.info("Pesan tidak boleh kosong!");
+    if (!message.trim() ) {
+      toast.info("Pesan tidak boleh kosong!");
+      speakText("Pesan tidak boleh kosong!");
+      return;
+    }
+    // jika kosong maka voice
+   
     const encodedMessage = encodeURIComponent(message);
     window.open(`https://wa.me/6285173284821?text=${encodedMessage}`, "_blank");
     setMessage("");
