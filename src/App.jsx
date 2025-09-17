@@ -20,11 +20,12 @@ import {
 import { FaRegPaperPlane } from "react-icons/fa6";
 import Bagikan from "./Bagikan";
 import { toast, Toaster } from "sonner";
+import Berita from "./Berita";
 
 const App = () => {
   const [activeModal, setActiveModal] = useState(null);
   const [message, setMessage] = useState("");
- const [accessibilityOn, setAccessibilityOn] = useState(true); // ✅ toggle voice
+  const [accessibilityOn, setAccessibilityOn] = useState(true); // ✅ toggle voice
   const [settingsOpen, setSettingsOpen] = useState(false);
   // ✅ Fungsi suara
   const speakText = (text) => {
@@ -32,7 +33,6 @@ const App = () => {
       window.responsiveVoice.speak(text, "Indonesian Female");
     }
   };
-
 
   const buttonVariants = {
     hidden: { opacity: 0, y: 30 },
@@ -67,27 +67,26 @@ const App = () => {
   };
 
   const handleSendWhatsApp = () => {
-    if (!message.trim() ) {
+    if (!message.trim()) {
       toast.info("Pesan tidak boleh kosong!");
       speakText("Pesan tidak boleh kosong!");
       return;
     }
     // jika kosong maka voice
-   
+
     const encodedMessage = encodeURIComponent(message);
     window.open(`https://wa.me/6285173284821?text=${encodedMessage}`, "_blank");
     setMessage("");
     setActiveModal(null);
-   
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-[#700D09] via-white to-gray-100 p-6">
+  <div className="min-h-screen flex flex-col md:flex-row items-start justify-center bg-gradient-to-b from-[#700D09] via-white to-gray-100 p-6 gap-6">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="w-full max-w-lg bg-white rounded-2xl drop-shadow-2xl flex flex-col items-center overflow-hidden"
+       className="w-full md:ml-20 md:w-[40%] bg-white rounded-2xl drop-shadow-2xl flex flex-col items-center overflow-hidden"
       >
         {/* Logo */}
         <motion.img
@@ -189,8 +188,11 @@ const App = () => {
             <span>KPU Kabupaten Sekadau</span>
           </motion.a>
         </motion.div>
-      <Bagikan />
+        <Bagikan />
       </motion.div>
+<div className="lg:block md:block hidden  w-[50%]">
+    <Berita accessibilityOn={accessibilityOn} />
+  </div>
 
       {/* MODAL */}
       <AnimatePresence>
@@ -213,13 +215,10 @@ const App = () => {
             >
               <button
                 onClick={() => setActiveModal(null)}
-             
                 className="absolute top-2 right-3 text-gray-500 hover:text-[#700D09] text-xl"
               >
                 ✕
               </button>
-
-
 
               {/* Layanan Pengaduan */}
               {activeModal === "contact" && (
@@ -256,25 +255,25 @@ const App = () => {
                     >
                       <FaPhone /> <span>Call Center (WhatsApp)</span>
                     </motion.button>
-<motion.button
-  onClick={() => {
-    const w = screen.availWidth;
-    const h = screen.availHeight;
-    window.open(
-      "https://cloud.mystorages.my.id/bucket/spanduk-pelayanan.pdf",
-      "PopupWindow",
-      `width=${w},height=${h},left=0,top=0,resizable=yes,scrollbars=yes`
-    );
-  }}
-  onTouchStart={() => speakText("Jam Pelayanan")}
-  onMouseEnter={() => speakText("Jam Pelayanan")}
-  className="flex shine-btn items-center gap-3 py-3 px-4 bg-[#700D09] text-white rounded-xl shadow"
-  variants={buttonVariants}
-  whileHover="hover"
-  whileTap="tap"
->
-  <FaClock /> <span>Jam Pelayanan</span>
-</motion.button>
+                    <motion.button
+                      onClick={() => {
+                        const w = screen.availWidth;
+                        const h = screen.availHeight;
+                        window.open(
+                          "https://cloud.mystorages.my.id/bucket/spanduk-pelayanan.pdf",
+                          "PopupWindow",
+                          `width=${w},height=${h},left=0,top=0,resizable=yes,scrollbars=yes`
+                        );
+                      }}
+                      onTouchStart={() => speakText("Jam Pelayanan")}
+                      onMouseEnter={() => speakText("Jam Pelayanan")}
+                      className="flex shine-btn items-center gap-3 py-3 px-4 bg-[#700D09] text-white rounded-xl shadow"
+                      variants={buttonVariants}
+                      whileHover="hover"
+                      whileTap="tap"
+                    >
+                      <FaClock /> <span>Jam Pelayanan</span>
+                    </motion.button>
                   </motion.div>
                 </>
               )}
@@ -282,7 +281,9 @@ const App = () => {
               {/* WhatsApp Input */}
               {activeModal === "whatsapp" && (
                 <>
-                  <h3 className="text-xl font-bold mb-4 text-[#700D09]">Pesan</h3>
+                  <h3 className="text-xl font-bold mb-4 text-[#700D09]">
+                    Pesan
+                  </h3>
                   <textarea
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
@@ -389,8 +390,10 @@ const App = () => {
                         text: "TikTok",
                         link: "https://www.tiktok.com/@kpusekadau",
                       },
-                      { text: "YouTube", link: "https://www.youtube.com/channel/UCv2bBlkAA6YdFAi0BuYX0kA" },
-                      
+                      {
+                        text: "YouTube",
+                        link: "https://www.youtube.com/channel/UCv2bBlkAA6YdFAi0BuYX0kA",
+                      },
                     ].map((item, i) => (
                       <motion.a
                         key={i}
@@ -424,9 +427,18 @@ const App = () => {
                     animate="visible"
                   >
                     {[
-                      { text: "Portal JDIH", link: "https://jdih.kpu.go.id/kalbar/sekadau" },
-                      { text: "Peraturan KPU", link: "https://jdih.kpu.go.id/kalbar/sekadau/peraturan-kpu" },
-                      { text: "Undang-Undang", link: "https://jdih.kpu.go.id/kalbar/sekadau/undang-undang" },
+                      {
+                        text: "Portal JDIH",
+                        link: "https://jdih.kpu.go.id/kalbar/sekadau",
+                      },
+                      {
+                        text: "Peraturan KPU",
+                        link: "https://jdih.kpu.go.id/kalbar/sekadau/peraturan-kpu",
+                      },
+                      {
+                        text: "Undang-Undang",
+                        link: "https://jdih.kpu.go.id/kalbar/sekadau/undang-undang",
+                      },
                     ].map((item, i) => (
                       <motion.a
                         key={i}
@@ -443,7 +455,7 @@ const App = () => {
                         <div className="flex items-center gap-3">
                           <FaBalanceScale className="text-lg" />
 
-                        <span>{item.text}</span>
+                          <span>{item.text}</span>
                         </div>
                       </motion.a>
                     ))}
@@ -451,68 +463,71 @@ const App = () => {
                 </>
               )}
             </motion.div>
+
           </motion.div>
         )}
       </AnimatePresence>
 
-       {/* ================== FLOATING VOICE BUTTON ================== */}
-     {/* ================== FLOATING VOICE BUTTON ================== */}
-<div className="fixed bottom-5 right-5 z-50">
-  {/* Tombol Utama */}
-  <button
-    onClick={() => setSettingsOpen(!settingsOpen)}
-    className="p-4 rounded-full bg-[#700D09] text-white shadow-lg hover:scale-105 transition"
-  >
-    {accessibilityOn ? <FaVolumeUp /> : <FaVolumeMute />}
-  </button>
-
-  {/* Popup Setting */}
-  <AnimatePresence>
-    {settingsOpen && (
-      <motion.div
-        className="fixed inset-0 z-50 flex items-end justify-end" // full screen overlay
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        onClick={() => setSettingsOpen(false)} // klik luar nutup
-      >
-        <motion.div
-          onClick={(e) => e.stopPropagation()} // klik dalam popup jangan nutup
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 20 }}
-          className="bg-white rounded-xl shadow-xl p-4 w-64 m-4 relative"
+      {/* ================== FLOATING VOICE BUTTON ================== */}
+      {/* ================== FLOATING VOICE BUTTON ================== */}
+      <div className="fixed bottom-5 right-5 z-50">
+        {/* Tombol Utama */}
+        <button
+          onClick={() => setSettingsOpen(!settingsOpen)}
+          className="p-4 rounded-full bg-[#700D09] text-white shadow-lg hover:scale-105 transition"
         >
-          {/* Tombol Close */}
-          <button
-            onClick={() => setSettingsOpen(false)}
-            className="absolute top-2 right-3 text-gray-500 hover:text-[#700D09] hover:scale-110 transition text-lg"
-          >
-            ✕
-          </button>
+          {accessibilityOn ? <FaVolumeUp /> : <FaVolumeMute />}
+        </button>
 
-          {/* Isi Popup */}
-          <h4 className="text-lg font-semibold mb-2">Aksesibilitas</h4>
-          <div className="flex items-center justify-between">
-            <span>Asisten Suara</span>
-            <button
-              onClick={() => setAccessibilityOn(!accessibilityOn)}
-              className={`px-3 py-1 rounded-full text-sm ${
-                accessibilityOn
-                  ? "bg-[#700D09] text-white"
-                  : "bg-gray-300 text-black"
-              }`}
+        {/* Popup Setting */}
+        <AnimatePresence>
+          {settingsOpen && (
+            <motion.div
+              className="fixed inset-0 z-50 flex items-end justify-end" // full screen overlay
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setSettingsOpen(false)} // klik luar nutup
             >
-              {accessibilityOn ? "On" : "Off"}
-            </button>
-          </div>
-        </motion.div>
-      </motion.div>
-    )}
-  </AnimatePresence>
+              <motion.div
+                onClick={(e) => e.stopPropagation()} // klik dalam popup jangan nutup
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 20 }}
+                className="bg-white rounded-xl shadow-xl p-4 w-64 m-4 relative"
+              >
+                {/* Tombol Close */}
+                <button
+                  onClick={() => setSettingsOpen(false)}
+                  className="absolute top-2 right-3 text-gray-500 hover:text-[#700D09] hover:scale-110 transition text-lg"
+                >
+                  ✕
+                </button>
 
-</div>
- <Toaster richColors position="top-right" closeButton />
+                {/* Isi Popup */}
+                <h4 className="text-lg font-semibold mb-2">Aksesibilitas</h4>
+                <div className="flex items-center justify-between">
+                  <span>Asisten Suara</span>
+                  <button
+                    onClick={() => setAccessibilityOn(!accessibilityOn)}
+                    className={`px-3 py-1 rounded-full text-sm ${
+                      accessibilityOn
+                        ? "bg-[#700D09] text-white"
+                        : "bg-gray-300 text-black"
+                    }`}
+                  >
+                    {accessibilityOn ? "On" : "Off"}
+                  </button>
+                </div>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+    
+    
+      </div>
+
+      <Toaster richColors position="top-right" closeButton />
     </div>
   );
 };

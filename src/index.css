@@ -38,3 +38,13 @@ body {
     left: 125%;
   }
 }
+
+@keyframes loading {
+  0% { transform: translateX(-100%); }
+  50% { transform: translateX(0%); }
+  100% { transform: translateX(100%); }
+}
+
+.animate-\[loading_1\.5s_linear_infinite\] {
+  animation: loading 1.5s linear infinite;
+}
