@@ -73,12 +73,12 @@ const Berita = ({ accessibilityOn }) => {
         </ul>
       </div>
     ),
-    responsive: [
-      { breakpoint: 1360, settings: { slidesToShow: 2 } },
-      { breakpoint: 1024, settings: { slidesToShow: 1 } },
-      { breakpoint: 900, settings: { slidesToShow: 1 } },
-      { breakpoint: 768, settings: { slidesToShow: 1 } },
-    ],
+   responsive: [
+    { breakpoint: 1366, settings: { slidesToShow: 1 } }, // desktop besar
+    { breakpoint: 1024, settings: { slidesToShow: 1 } }, // tablet landscape
+    { breakpoint: 768, settings: { slidesToShow: 1 } },  // tablet portrait / mobile besar
+    { breakpoint: 480, settings: { slidesToShow: 1 } },  // mobile kecil
+  ],
   };
  if (error) {
     return <p className="text-center text-red-500">{error}</p>;

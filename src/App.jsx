@@ -81,7 +81,7 @@ const App = () => {
   };
 
   return (
-  <div className="min-h-screen  flex flex-col md:flex-row lg:items-start items-center md:items-center justify-center bg-gradient-to-b from-[#700D09] via-white to-gray-100 p-6 gap-6">
+  <div className="min-h-screen  flex flex-col md:flex-col lg:flex-row lg:items-start items-center md:items-center justify-center bg-gradient-to-b from-[#700D09] via-white to-gray-100 p-6 gap-6">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
@@ -190,7 +190,7 @@ const App = () => {
         </motion.div>
         <Bagikan />
       </motion.div>
-<div className="lg:block md:hidden hidden  w-[50%]">
+<div className="  lg:w-[50%] md:w-[70%] w-full">
     <Berita accessibilityOn={accessibilityOn} />
   </div>
 
