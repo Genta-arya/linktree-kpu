@@ -102,6 +102,7 @@ const App = () => {
             target="_blank"
             rel="noopener noreferrer"
             onMouseEnter={() => speakText("Website Resmi")}
+            onTouchStart={() => speakText("Website Resmi")}
             className="flex shine-btn items-center gap-3 w-full py-3 px-4 bg-red-600 text-white font-medium rounded-xl shadow-md"
             variants={buttonVariants}
             whileHover="hover"
@@ -115,6 +116,7 @@ const App = () => {
           <motion.button
             onClick={() => setActiveModal("berita")}
             onMouseEnter={() => speakText("Berita")}
+            onTouchStart={() => speakText("Berita")}
             className="flex shine-btn items-center gap-3 w-full py-3 px-4 bg-red-600 text-white font-medium rounded-xl shadow-md"
             variants={buttonVariants}
             whileHover="hover"
@@ -127,6 +129,7 @@ const App = () => {
           <motion.button
             onClick={() => setActiveModal("hukum")}
             onMouseEnter={() => speakText("Informasi Hukum")}
+            onTouchStart={() => speakText("Informasi Hukum")}
             className="flex shine-btn items-center gap-3 w-full py-3 px-4 bg-red-600 text-white font-medium rounded-xl shadow-md"
             variants={buttonVariants}
             whileHover="hover"
@@ -139,6 +142,7 @@ const App = () => {
           <motion.button
             onClick={() => setActiveModal("social")}
             onMouseEnter={() => speakText("Media Sosial")}
+            onTouchStart={() => speakText("Media Sosial")}
             className="flex shine-btn items-center gap-3 w-full py-3 px-4 bg-red-600 text-white font-medium rounded-xl shadow-md"
             variants={buttonVariants}
             whileHover="hover"
@@ -151,6 +155,7 @@ const App = () => {
           <motion.button
             onClick={() => setActiveModal("contact")}
             onMouseEnter={() => speakText("Layanan Pengaduan")}
+            onTouchStart={() => speakText("Layanan Pengaduan")}
             className="flex shine-btn items-center gap-3 w-full py-3 px-4 bg-red-600 text-white font-medium rounded-xl shadow-md"
             variants={buttonVariants}
             whileHover="hover"
@@ -165,6 +170,7 @@ const App = () => {
             target="_blank"
             rel="noopener noreferrer"
             onMouseEnter={() => speakText("Lokasi KPU Kabupaten Sekadau")}
+            onTouchStart={() => speakText("Lokasi KPU Kabupaten Sekadau")}
             className="flex shine-btn items-center gap-3 w-full py-3 px-4 bg-red-600 text-white font-medium rounded-xl shadow-md"
             variants={buttonVariants}
             whileHover="hover"
@@ -197,7 +203,7 @@ const App = () => {
             >
               <button
                 onClick={() => setActiveModal(null)}
-                onMouseEnter={() => speakText("Tutup")}
+             
                 className="absolute top-2 right-3 text-gray-500 hover:text-red-600 text-xl"
               >
                 ✕
@@ -218,6 +224,7 @@ const App = () => {
                     <motion.a
                       href="mailto:kpu.sekadau@gmail.com"
                       onMouseEnter={() => speakText("Kirim Email")}
+                      onTouchStart={() => speakText("Kirim Email")}
                       className="flex shine-btn items-center gap-3 py-3 px-4 bg-red-600 text-white rounded-xl shadow"
                       variants={buttonVariants}
                       whileHover="hover"
@@ -228,6 +235,7 @@ const App = () => {
 
                     <motion.button
                       onClick={() => setActiveModal("whatsapp")}
+                      onTouchStart={() => speakText("Call Center WhatsApp")}
                       onMouseEnter={() => speakText("Call Center WhatsApp")}
                       className="flex shine-btn items-center gap-3 py-3 px-4 bg-red-600 text-white rounded-xl shadow"
                       variants={buttonVariants}
@@ -254,6 +262,7 @@ const App = () => {
                   <motion.button
                     onClick={handleSendWhatsApp}
                     onMouseEnter={() => speakText("Kirim Pesan")}
+                    onTouchStart={() => speakText("Kirim Pesan")}
                     className="w-full py-3 px-4 bg-red-600 text-white font-medium rounded-xl shadow-md"
                     variants={buttonVariants}
                     whileHover="hover"
@@ -304,6 +313,7 @@ const App = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                         onMouseEnter={() => speakText(item.text)}
+                        onTouchStart={() => speakText(item.text)}
                         className="flex flex-row lg:flex-col flex-wrap shine-btn items-center gap-3 py-3 px-4 bg-red-600 text-white rounded-xl shadow"
                         variants={buttonVariants}
                         whileHover="hover"
@@ -357,6 +367,7 @@ const App = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                         onMouseEnter={() => speakText(item.text)}
+                        onTouchStart={() => speakText(item.text)}
                         className="flex shine-btn items-center gap-3 py-3 px-4 bg-red-600 text-white rounded-xl shadow"
                         variants={buttonVariants}
                         whileHover="hover"
@@ -392,6 +403,7 @@ const App = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                         onMouseEnter={() => speakText(item.text)}
+                        onTouchStart={() => speakText(item.text)}
                         className="flex shine-btn items-center gap-3 py-3 px-4 bg-red-600 text-white rounded-xl shadow"
                         variants={buttonVariants}
                         whileHover="hover"
