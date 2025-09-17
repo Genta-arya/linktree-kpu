@@ -15,6 +15,7 @@ import {
   FaNewspaper,
   FaVolumeUp,
   FaVolumeMute,
+  FaClock,
 } from "react-icons/fa";
 import { FaRegPaperPlane } from "react-icons/fa6";
 import Bagikan from "./Bagikan";
@@ -218,6 +219,8 @@ const App = () => {
                 ✕
               </button>
 
+
+
               {/* Layanan Pengaduan */}
               {activeModal === "contact" && (
                 <>
@@ -253,6 +256,25 @@ const App = () => {
                     >
                       <FaPhone /> <span>Call Center (WhatsApp)</span>
                     </motion.button>
+<motion.button
+  onClick={() => {
+    const w = screen.availWidth;
+    const h = screen.availHeight;
+    window.open(
+      "https://cloud.mystorages.my.id/bucket/spanduk-pelayanan.pdf",
+      "PopupWindow",
+      `width=${w},height=${h},left=0,top=0,resizable=yes,scrollbars=yes`
+    );
+  }}
+  onTouchStart={() => speakText("Jam Pelayanan")}
+  onMouseEnter={() => speakText("Jam Pelayanan")}
+  className="flex shine-btn items-center gap-3 py-3 px-4 bg-[#700D09] text-white rounded-xl shadow"
+  variants={buttonVariants}
+  whileHover="hover"
+  whileTap="tap"
+>
+  <FaClock /> <span>Jam Pelayanan</span>
+</motion.button>
                   </motion.div>
                 </>
               )}

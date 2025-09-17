@@ -21,7 +21,7 @@ const Bagikan = () => {
   return (
     <>
       <span className="text-sm mb-2 font-extrabold text-gray-700">Bagikan</span>
-      <div className="flex justify-end items-center gap-2 pb-4">
+      <div className="flex justify-end items-center gap-2 pb-6">
         {/* WhatsApp */}
         <a
           href={`https://wa.me/?text=${encodeURIComponent(currentUrl)}`}
