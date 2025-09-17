@@ -4,6 +4,7 @@ import Slider from "react-slick";
 const Berita = ({ accessibilityOn }) => {
   const [berita, setBerita] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   
 
   useEffect(() => {
@@ -15,6 +16,7 @@ const Berita = ({ accessibilityOn }) => {
         setBerita(data && data.length ? data : []);
       } catch (error) {
         console.error("Error fetch berita:", error);
+        setError("Gagal memuat berita");
         setBerita([]);
       } finally {
         setLoading(false);
@@ -78,7 +80,9 @@ const Berita = ({ accessibilityOn }) => {
       { breakpoint: 768, settings: { slidesToShow: 1 } },
     ],
   };
-
+ if (error) {
+    return <p className="text-center text-red-500">{error}</p>;
+  }
   return (
     <div className="pb-4">
       <h1 className="text-2xl ml-2 font-bold text-yellow-500 mb-4 border-b-4 border-white w-fit">
