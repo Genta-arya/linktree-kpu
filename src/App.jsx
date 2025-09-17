@@ -17,6 +17,8 @@ import {
   FaVolumeMute,
 } from "react-icons/fa";
 import { FaRegPaperPlane } from "react-icons/fa6";
+import Bagikan from "./Bagikan";
+import { Toaster } from "sonner";
 
 const App = () => {
   const [activeModal, setActiveModal] = useState(null);
@@ -180,6 +182,7 @@ const App = () => {
             <span>KPU Kabupaten Sekadau</span>
           </motion.a>
         </motion.div>
+      <Bagikan />
       </motion.div>
 
       {/* MODAL */}
@@ -479,7 +482,9 @@ const App = () => {
       </motion.div>
     )}
   </AnimatePresence>
+
 </div>
+ <Toaster richColors position="top-right" closeButton />
     </div>
   );
 };
