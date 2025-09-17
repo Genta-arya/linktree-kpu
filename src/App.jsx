@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import icon from "./assets/icon-kpu.jpeg";
+import icon from "./assets/kantor.png";
 import {
   FaGlobe,
   FaInstagram,
@@ -12,11 +12,24 @@ import {
   FaTiktok,
   FaYoutube,
   FaMapMarkerAlt,
+  FaNewspaper,
+  FaVolumeUp,
+  FaVolumeMute,
 } from "react-icons/fa";
 import { FaRegPaperPlane } from "react-icons/fa6";
 
 const App = () => {
   const [activeModal, setActiveModal] = useState(null);
+  const [message, setMessage] = useState("");
+ const [accessibilityOn, setAccessibilityOn] = useState(true); // ✅ toggle voice
+  const [settingsOpen, setSettingsOpen] = useState(false);
+  // ✅ Fungsi suara
+  const speakText = (text) => {
+    if (accessibilityOn && window.responsiveVoice) {
+      window.responsiveVoice.speak(text, "Indonesian Female");
+    }
+  };
+
 
   const buttonVariants = {
     hidden: { opacity: 0, y: 30 },
@@ -33,12 +46,10 @@ const App = () => {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        delayChildren: 0.2, // jeda sebelum anak mulai animasi
-        staggerChildren: 0.25, // jeda antar anak
-      },
+      transition: { delayChildren: 0.2, staggerChildren: 0.25 },
     },
   };
+
   useEffect(() => {
     window.scrollTo({
       top: document.body.scrollHeight / 2 - window.innerHeight / 2,
@@ -52,35 +63,36 @@ const App = () => {
     exit: { opacity: 0, scale: 0.9 },
   };
 
+  const handleSendWhatsApp = () => {
+    if (!message.trim()) return;
+    const encodedMessage = encodeURIComponent(message);
+    window.open(`https://wa.me/6285173284821?text=${encodedMessage}`, "_blank");
+    setMessage("");
+    setActiveModal(null);
+   
+  };
+
   return (
-    <div className="min-h-screen  flex items-center justify-center bg-gradient-to-b from-red-600 via-white to-gray-100 p-6">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-red-600 via-white to-gray-100 p-6">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="w-full max-w-lg  bg-white rounded-2xl drop-shadow-2xl p-6 flex flex-col items-center"
+        className="w-full max-w-lg bg-white rounded-2xl drop-shadow-2xl flex flex-col items-center overflow-hidden"
       >
         {/* Logo */}
         <motion.img
           src={icon}
           alt="Logo KPU"
-          className="w-28 h-28 mb-5"
-          initial={{ rotate: -15, opacity: 0 }}
+          className="w-full h-auto object-cover"
+          initial={{ rotate: 0, opacity: 0 }}
           animate={{ rotate: 0, opacity: 1 }}
           transition={{ duration: 1 }}
         />
 
-        {/* Nama/Deskripsi */}
-        <h1 className="lg:text-2xl text-lg font-extrabold text-black">
-          KOMISI PEMILIHAN UMUM
-        </h1>
-        <p className="uppercase font-extrabold lg:text-xl pb-4 w-full  mb-6 text-center text-base border-b-4 rounded-full border-red-600 inline-block">
-          Kabupaten Sekadau
-        </p>
-
-        {/* ========== LIST UTAMA ========== */}
+        {/* LIST UTAMA */}
         <motion.div
-          className="w-full flex flex-col gap-4"
+          className="w-full flex flex-col gap-4 p-6"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
@@ -89,6 +101,7 @@ const App = () => {
             href="https://kab-sekadau.kpu.go.id/"
             target="_blank"
             rel="noopener noreferrer"
+            onMouseEnter={() => speakText("Website Resmi")}
             className="flex shine-btn items-center gap-3 w-full py-3 px-4 bg-red-600 text-white font-medium rounded-xl shadow-md"
             variants={buttonVariants}
             whileHover="hover"
@@ -98,8 +111,22 @@ const App = () => {
             <span>Website Resmi</span>
           </motion.a>
 
+          {/* Menu Berita */}
+          <motion.button
+            onClick={() => setActiveModal("berita")}
+            onMouseEnter={() => speakText("Berita")}
+            className="flex shine-btn items-center gap-3 w-full py-3 px-4 bg-red-600 text-white font-medium rounded-xl shadow-md"
+            variants={buttonVariants}
+            whileHover="hover"
+            whileTap="tap"
+          >
+            <FaNewspaper className="text-lg" />
+            <span>Berita</span>
+          </motion.button>
+
           <motion.button
             onClick={() => setActiveModal("hukum")}
+            onMouseEnter={() => speakText("Informasi Hukum")}
             className="flex shine-btn items-center gap-3 w-full py-3 px-4 bg-red-600 text-white font-medium rounded-xl shadow-md"
             variants={buttonVariants}
             whileHover="hover"
@@ -111,6 +138,7 @@ const App = () => {
 
           <motion.button
             onClick={() => setActiveModal("social")}
+            onMouseEnter={() => speakText("Media Sosial")}
             className="flex shine-btn items-center gap-3 w-full py-3 px-4 bg-red-600 text-white font-medium rounded-xl shadow-md"
             variants={buttonVariants}
             whileHover="hover"
@@ -122,6 +150,7 @@ const App = () => {
 
           <motion.button
             onClick={() => setActiveModal("contact")}
+            onMouseEnter={() => speakText("Layanan Pengaduan")}
             className="flex shine-btn items-center gap-3 w-full py-3 px-4 bg-red-600 text-white font-medium rounded-xl shadow-md"
             variants={buttonVariants}
             whileHover="hover"
@@ -135,7 +164,8 @@ const App = () => {
             href="https://maps.app.goo.gl/7DUsvYMbRsKuAD9H8"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex shine-btn items-center gap-3 w-full py-3 px-4 bg-red-600 text-white font-medium rounded-xl shadow-md "
+            onMouseEnter={() => speakText("Lokasi KPU Kabupaten Sekadau")}
+            className="flex shine-btn items-center gap-3 w-full py-3 px-4 bg-red-600 text-white font-medium rounded-xl shadow-md"
             variants={buttonVariants}
             whileHover="hover"
             whileTap="tap"
@@ -146,7 +176,7 @@ const App = () => {
         </motion.div>
       </motion.div>
 
-      {/* ========== MODAL ========== */}
+      {/* MODAL */}
       <AnimatePresence>
         {activeModal && (
           <motion.div
@@ -165,15 +195,15 @@ const App = () => {
               exit="exit"
               transition={{ duration: 0.3 }}
             >
-              {/* Close Button */}
               <button
                 onClick={() => setActiveModal(null)}
+                onMouseEnter={() => speakText("Tutup")}
                 className="absolute top-2 right-3 text-gray-500 hover:text-red-600 text-xl"
               >
                 ✕
               </button>
 
-              {/* Content */}
+              {/* Layanan Pengaduan */}
               {activeModal === "contact" && (
                 <>
                   <h3 className="text-xl font-bold mb-4 text-red-600 text-center">
@@ -186,7 +216,8 @@ const App = () => {
                     animate="visible"
                   >
                     <motion.a
-                      href="mailto:info@kpu.go.id"
+                      href="mailto:kpu.sekadau@gmail.com"
+                      onMouseEnter={() => speakText("Kirim Email")}
                       className="flex shine-btn items-center gap-3 py-3 px-4 bg-red-600 text-white rounded-xl shadow"
                       variants={buttonVariants}
                       whileHover="hover"
@@ -194,21 +225,101 @@ const App = () => {
                     >
                       <FaEnvelope /> <span>Email</span>
                     </motion.a>
-                    <motion.a
-                      href="https://wa.me/6282197085204" // ganti dengan nomor WA resmi KPU
-                      target="_blank"
-                      rel="noopener noreferrer"
+
+                    <motion.button
+                      onClick={() => setActiveModal("whatsapp")}
+                      onMouseEnter={() => speakText("Call Center WhatsApp")}
                       className="flex shine-btn items-center gap-3 py-3 px-4 bg-red-600 text-white rounded-xl shadow"
                       variants={buttonVariants}
                       whileHover="hover"
                       whileTap="tap"
                     >
                       <FaPhone /> <span>Call Center (WhatsApp)</span>
-                    </motion.a>
+                    </motion.button>
                   </motion.div>
                 </>
               )}
 
+              {/* WhatsApp Input */}
+              {activeModal === "whatsapp" && (
+                <>
+                  <h3 className="text-xl font-bold mb-4 text-red-600">Pesan</h3>
+                  <textarea
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                    className="w-full border rounded-lg p-2 mb-3 focus:outline-none focus:ring-2 focus:ring-red-500"
+                    rows="4"
+                    placeholder="Ketik pesan Anda..."
+                  />
+                  <motion.button
+                    onClick={handleSendWhatsApp}
+                    onMouseEnter={() => speakText("Kirim Pesan")}
+                    className="w-full py-3 px-4 bg-red-600 text-white font-medium rounded-xl shadow-md"
+                    variants={buttonVariants}
+                    whileHover="hover"
+                    whileTap="tap"
+                  >
+                    <FaRegPaperPlane className="inline mr-2" /> Kirim
+                  </motion.button>
+                </>
+              )}
+
+              {/* Modal Berita */}
+              {activeModal === "berita" && (
+                <>
+                  <h3 className="text-xl font-bold mb-4 text-red-600 text-center">
+                    Berita
+                  </h3>
+                  <motion.div
+                    className="flex flex-col gap-3"
+                    variants={containerVariants}
+                    initial="hidden"
+                    animate="visible"
+                  >
+                    {[
+                      {
+                        text: "Berita Terkini",
+                        link: "https://kab-sekadau.kpu.go.id/blog/category/104",
+                      },
+                      {
+                        text: "Opini",
+                        link: "https://kab-sekadau.kpu.go.id/blog/category/135",
+                      },
+                      {
+                        text: "Pengumuman",
+                        link: "https://kab-sekadau.kpu.go.id/blog/category/11",
+                      },
+                      {
+                        text: "Sosialisasi",
+                        link: "https://kab-sekadau.kpu.go.id/blog/category/105",
+                      },
+                      {
+                        text: "Umum",
+                        link: "https://kab-sekadau.kpu.go.id/blog/category/14",
+                      },
+                    ].map((item, i) => (
+                      <motion.a
+                        key={i}
+                        href={item.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onMouseEnter={() => speakText(item.text)}
+                        className="flex flex-row lg:flex-col flex-wrap shine-btn items-center gap-3 py-3 px-4 bg-red-600 text-white rounded-xl shadow"
+                        variants={buttonVariants}
+                        whileHover="hover"
+                        whileTap="tap"
+                      >
+                        <div className="flex items-center gap-3">
+                          <FaNewspaper className="text-lg" />
+                          <span>{item.text}</span>
+                        </div>
+                      </motion.a>
+                    ))}
+                  </motion.div>
+                </>
+              )}
+
+              {/* Media Sosial */}
               {activeModal === "social" && (
                 <>
                   <h3 className="text-xl font-bold mb-4 text-red-600 text-center">
@@ -222,48 +333,43 @@ const App = () => {
                   >
                     {[
                       {
-                        icon: <FaInstagram />,
                         text: "Instagram",
-                        link: "https://www.instagram.com/kpu_kab.sekadau/",
+                        link: "https://www.instagram.com/kpu_kab.sekadau",
                       },
                       {
-                        icon: <FaFacebook />,
                         text: "Facebook",
-                        link: "https://www.facebook.com/kpukabupatensekadau",
+                        link: "https://web.facebook.com/kpukabupatensekadau/?locale=id_ID&_rdc=1&_rdr#",
                       },
                       {
-                        icon: <FaTiktok />,
-                        text: "Tiktok",
-                        link: "https://www.tiktok.com/@jdihkpu_sekadau",
-                      },
-                      {
-                        icon: <FaTwitter />,
                         text: "Twitter",
-                        link: "https://x.com/SekadauKpu",
+                        link: "https://x.com/kpuskd",
                       },
                       {
-                        icon: <FaYoutube />,
-                        text: "Youtube",
-                        link: "https://www.youtube.com/@kpukabupatensekadau",
+                        text: "TikTok",
+                        link: "https://www.tiktok.com/@kpusekadau",
                       },
+                      { text: "YouTube", link: "https://www.youtube.com/channel/UCv2bBlkAA6YdFAi0BuYX0kA" },
+                      
                     ].map((item, i) => (
                       <motion.a
                         key={i}
                         href={item.link}
                         target="_blank"
                         rel="noopener noreferrer"
+                        onMouseEnter={() => speakText(item.text)}
                         className="flex shine-btn items-center gap-3 py-3 px-4 bg-red-600 text-white rounded-xl shadow"
                         variants={buttonVariants}
                         whileHover="hover"
                         whileTap="tap"
                       >
-                        {item.icon} <span>{item.text}</span>
+                        <span>{item.text}</span>
                       </motion.a>
                     ))}
                   </motion.div>
                 </>
               )}
 
+              {/* Hukum */}
               {activeModal === "hukum" && (
                 <>
                   <h3 className="text-xl font-bold mb-4 text-red-600 text-center">
@@ -276,30 +382,26 @@ const App = () => {
                     animate="visible"
                   >
                     {[
-                      {
-                        text: "Portal JDIH",
-                        link: "https://jdih.kpu.go.id/kalbar/sekadau",
-                      },
-                      {
-                        text: "Peraturan KPU",
-                        link: "https://jdih.kpu.go.id/kalbar/sekadau/peraturan-kpu",
-                      },
-                      {
-                        text: "Undang-Undang",
-                        link: "https://jdih.kpu.go.id/kalbar/sekadau/undang-undang/",
-                      },
+                      { text: "Portal JDIH", link: "https://jdih.kpu.go.id/kalbar/sekadau" },
+                      { text: "Peraturan KPU", link: "https://jdih.kpu.go.id/kalbar/sekadau/peraturan-kpu" },
+                      { text: "Undang-Undang", link: "https://jdih.kpu.go.id/kalbar/sekadau/undang-undang" },
                     ].map((item, i) => (
                       <motion.a
                         key={i}
                         href={item.link}
                         target="_blank"
                         rel="noopener noreferrer"
+                        onMouseEnter={() => speakText(item.text)}
                         className="flex shine-btn items-center gap-3 py-3 px-4 bg-red-600 text-white rounded-xl shadow"
                         variants={buttonVariants}
                         whileHover="hover"
                         whileTap="tap"
                       >
+                        <div className="flex items-center gap-3">
+                          <FaBalanceScale className="text-lg" />
+
                         <span>{item.text}</span>
+                        </div>
                       </motion.a>
                     ))}
                   </motion.div>
@@ -309,6 +411,63 @@ const App = () => {
           </motion.div>
         )}
       </AnimatePresence>
+
+       {/* ================== FLOATING VOICE BUTTON ================== */}
+     {/* ================== FLOATING VOICE BUTTON ================== */}
+<div className="fixed bottom-5 right-5 z-50">
+  {/* Tombol Utama */}
+  <button
+    onClick={() => setSettingsOpen(!settingsOpen)}
+    className="p-4 rounded-full bg-red-600 text-white shadow-lg hover:scale-105 transition"
+  >
+    {accessibilityOn ? <FaVolumeUp /> : <FaVolumeMute />}
+  </button>
+
+  {/* Popup Setting */}
+  <AnimatePresence>
+    {settingsOpen && (
+      <motion.div
+        className="fixed inset-0 z-50 flex items-end justify-end" // full screen overlay
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        onClick={() => setSettingsOpen(false)} // klik luar nutup
+      >
+        <motion.div
+          onClick={(e) => e.stopPropagation()} // klik dalam popup jangan nutup
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 20 }}
+          className="bg-white rounded-xl shadow-xl p-4 w-64 m-4 relative"
+        >
+          {/* Tombol Close */}
+          <button
+            onClick={() => setSettingsOpen(false)}
+            className="absolute top-2 right-3 text-gray-500 hover:text-red-600 hover:scale-110 transition text-lg"
+          >
+            ✕
+          </button>
+
+          {/* Isi Popup */}
+          <h4 className="text-lg font-semibold mb-2">Aksesibilitas</h4>
+          <div className="flex items-center justify-between">
+            <span>Asisten Suara</span>
+            <button
+              onClick={() => setAccessibilityOn(!accessibilityOn)}
+              className={`px-3 py-1 rounded-full text-sm ${
+                accessibilityOn
+                  ? "bg-red-600 text-white"
+                  : "bg-gray-300 text-black"
+              }`}
+            >
+              {accessibilityOn ? "On" : "Off"}
+            </button>
+          </div>
+        </motion.div>
+      </motion.div>
+    )}
+  </AnimatePresence>
+</div>
     </div>
   );
 };

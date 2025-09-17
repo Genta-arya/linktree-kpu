@@ -38,8 +38,20 @@
       content="Akses layanan informasi resmi KPU Kabupaten Sekadau: website, hukum, pengaduan, media sosial, dan lokasi kantor."
     />
     <meta name="twitter:image" content="/ICON.jpeg" />
+<script src="https://cdn.jsdelivr.net/gh/mickidum/acc_toolbar/acctoolbar/acctoolbar.min.js"></script>
+<script>
+  window.onload = function() {
+    window.micAccessTool = new MicAccessTool({
+      link: 'http://your-awesome-website.com/your-accessibility-declaration.pdf',
+      contact: 'mailto:your-mail@your-awesome-website.com',
+      buttonPosition: 'left',      // ✅ pindah ke kiri
+      forceLang: 'id-ID'           // ✅ pakai Bahasa Indonesia
+    });
+  }
+</script>
 
     <!-- Schema.org JSON-LD -->
+     <script src="https://code.responsivevoice.org/responsivevoice.js?key=BPHCaF0P"></script>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
