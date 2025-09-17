@@ -81,12 +81,12 @@ const App = () => {
   };
 
   return (
-  <div className="min-h-screen flex flex-col md:flex-row items-start justify-center bg-gradient-to-b from-[#700D09] via-white to-gray-100 p-6 gap-6">
+  <div className="min-h-screen  flex flex-col md:flex-row lg:items-start items-center md:items-center justify-center bg-gradient-to-b from-[#700D09] via-white to-gray-100 p-6 gap-6">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-       className="w-full md:ml-20 md:w-[40%] bg-white rounded-2xl drop-shadow-2xl flex flex-col items-center overflow-hidden"
+       className="w-full lg:ml-20 lg:w-1/3 md:w-[70%]  bg-white rounded-2xl drop-shadow-2xl flex flex-col items-center overflow-hidden"
       >
         {/* Logo */}
         <motion.img
@@ -190,7 +190,7 @@ const App = () => {
         </motion.div>
         <Bagikan />
       </motion.div>
-<div className="lg:block md:block hidden  w-[50%]">
+<div className="lg:block md:hidden hidden  w-[50%]">
     <Berita accessibilityOn={accessibilityOn} />
   </div>
 
