@@ -73,18 +73,17 @@ const Berita = ({ accessibilityOn }) => {
         </ul>
       </div>
     ),
-   responsive: [
-    { breakpoint: 1366, settings: { slidesToShow: 1 } }, // desktop besar
-    { breakpoint: 1024, settings: { slidesToShow: 1 } }, // tablet landscape
-    { breakpoint: 768, settings: { slidesToShow: 1 } },  // tablet portrait / mobile besar
-    { breakpoint: 480, settings: { slidesToShow: 1 } },  // mobile kecil
-  ],
+  responsive: [
+  { breakpoint: 1024, settings: { slidesToShow: 2 } }, // desktop medium
+    { breakpoint: 768, settings: { slidesToShow: 1 } },  // tablet
+ 
+],
   };
  if (error) {
     return <p className="text-center text-red-500">{error}</p>;
   }
   return (
-    <div className="pb-4">
+    <div className="pb-4 ">
       <h1 className="text-2xl ml-2 font-bold text-yellow-500 mb-4 border-b-4 border-white w-fit">
         Berita Terbaru
       </h1>

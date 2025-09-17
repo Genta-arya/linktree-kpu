@@ -190,7 +190,7 @@ const App = () => {
         </motion.div>
         <Bagikan />
       </motion.div>
-<div className="  lg:w-[50%] md:w-[70%] w-full">
+<div className=" lg:block md:hidden hidden lg:w-[50%] md:w-[70%] w-full">
     <Berita accessibilityOn={accessibilityOn} />
   </div>
 
