@@ -18,7 +18,7 @@ import {
 } from "react-icons/fa";
 import { FaRegPaperPlane } from "react-icons/fa6";
 import Bagikan from "./Bagikan";
-import { Toaster } from "sonner";
+import { toast, Toaster } from "sonner";
 
 const App = () => {
   const [activeModal, setActiveModal] = useState(null);
@@ -66,7 +66,7 @@ const App = () => {
   };
 
   const handleSendWhatsApp = () => {
-    if (!message.trim()) return;
+    if (!message.trim()) return toast.info("Pesan tidak boleh kosong!");
     const encodedMessage = encodeURIComponent(message);
     window.open(`https://wa.me/6285173284821?text=${encodedMessage}`, "_blank");
     setMessage("");
