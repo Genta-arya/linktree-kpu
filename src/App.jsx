@@ -314,12 +314,12 @@ const App = () => {
                         rel="noopener noreferrer"
                         onMouseEnter={() => speakText(item.text)}
                         onTouchStart={() => speakText(item.text)}
-                        className="flex flex-row lg:flex-col flex-wrap shine-btn items-center gap-3 py-3 px-4 bg-red-600 text-white rounded-xl shadow"
+                        className="flex  shine-btn items-center gap-3 py-3 px-4 bg-red-600 text-white rounded-xl shadow"
                         variants={buttonVariants}
                         whileHover="hover"
                         whileTap="tap"
                       >
-                        <div className="flex items-center gap-3">
+                        <div className="flex items-center  gap-3">
                           <FaNewspaper className="text-lg" />
                           <span>{item.text}</span>
                         </div>
