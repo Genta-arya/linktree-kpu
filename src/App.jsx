@@ -277,7 +277,7 @@ const App = () => {
                     whileHover="hover"
                     whileTap="tap"
                   >
-                    <FaRegPaperPlane className="inline mr-2" /> Kirim
+                    <FaRegPaperPlane className="inline mr-2" /> Kirim Pesan
                   </motion.button>
                 </>
               )}
