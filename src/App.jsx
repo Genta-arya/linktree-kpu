@@ -81,7 +81,7 @@ const App = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-red-600 via-white to-gray-100 p-6">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-[#700D09] via-white to-gray-100 p-6">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
@@ -111,7 +111,7 @@ const App = () => {
             rel="noopener noreferrer"
             onMouseEnter={() => speakText("Website Resmi")}
             onTouchStart={() => speakText("Website Resmi")}
-            className="flex shine-btn items-center gap-3 w-full py-3 px-4 bg-red-600 text-white font-medium rounded-xl shadow-md"
+            className="flex shine-btn items-center gap-3 w-full py-3 px-4 bg-[#700D09] text-white font-medium rounded-xl shadow-md"
             variants={buttonVariants}
             whileHover="hover"
             whileTap="tap"
@@ -125,7 +125,7 @@ const App = () => {
             onClick={() => setActiveModal("berita")}
             onMouseEnter={() => speakText("Berita")}
             onTouchStart={() => speakText("Berita")}
-            className="flex shine-btn items-center gap-3 w-full py-3 px-4 bg-red-600 text-white font-medium rounded-xl shadow-md"
+            className="flex shine-btn items-center gap-3 w-full py-3 px-4 bg-[#700D09] text-white font-medium rounded-xl shadow-md"
             variants={buttonVariants}
             whileHover="hover"
             whileTap="tap"
@@ -138,7 +138,7 @@ const App = () => {
             onClick={() => setActiveModal("hukum")}
             onMouseEnter={() => speakText("Informasi Hukum")}
             onTouchStart={() => speakText("Informasi Hukum")}
-            className="flex shine-btn items-center gap-3 w-full py-3 px-4 bg-red-600 text-white font-medium rounded-xl shadow-md"
+            className="flex shine-btn items-center gap-3 w-full py-3 px-4 bg-[#700D09] text-white font-medium rounded-xl shadow-md"
             variants={buttonVariants}
             whileHover="hover"
             whileTap="tap"
@@ -151,7 +151,7 @@ const App = () => {
             onClick={() => setActiveModal("social")}
             onMouseEnter={() => speakText("Media Sosial")}
             onTouchStart={() => speakText("Media Sosial")}
-            className="flex shine-btn items-center gap-3 w-full py-3 px-4 bg-red-600 text-white font-medium rounded-xl shadow-md"
+            className="flex shine-btn items-center gap-3 w-full py-3 px-4 bg-[#700D09] text-white font-medium rounded-xl shadow-md"
             variants={buttonVariants}
             whileHover="hover"
             whileTap="tap"
@@ -164,7 +164,7 @@ const App = () => {
             onClick={() => setActiveModal("contact")}
             onMouseEnter={() => speakText("Layanan Pengaduan")}
             onTouchStart={() => speakText("Layanan Pengaduan")}
-            className="flex shine-btn items-center gap-3 w-full py-3 px-4 bg-red-600 text-white font-medium rounded-xl shadow-md"
+            className="flex shine-btn items-center gap-3 w-full py-3 px-4 bg-[#700D09] text-white font-medium rounded-xl shadow-md"
             variants={buttonVariants}
             whileHover="hover"
             whileTap="tap"
@@ -179,7 +179,7 @@ const App = () => {
             rel="noopener noreferrer"
             onMouseEnter={() => speakText("Lokasi KPU Kabupaten Sekadau")}
             onTouchStart={() => speakText("Lokasi KPU Kabupaten Sekadau")}
-            className="flex shine-btn items-center gap-3 w-full py-3 px-4 bg-red-600 text-white font-medium rounded-xl shadow-md"
+            className="flex shine-btn items-center gap-3 w-full py-3 px-4 bg-[#700D09] text-white font-medium rounded-xl shadow-md"
             variants={buttonVariants}
             whileHover="hover"
             whileTap="tap"
@@ -213,7 +213,7 @@ const App = () => {
               <button
                 onClick={() => setActiveModal(null)}
              
-                className="absolute top-2 right-3 text-gray-500 hover:text-red-600 text-xl"
+                className="absolute top-2 right-3 text-gray-500 hover:text-[#700D09] text-xl"
               >
                 ✕
               </button>
@@ -221,7 +221,7 @@ const App = () => {
               {/* Layanan Pengaduan */}
               {activeModal === "contact" && (
                 <>
-                  <h3 className="text-xl font-bold mb-4 text-red-600 text-center">
+                  <h3 className="text-xl font-bold mb-4 text-[#700D09] text-center">
                     Layanan Pengaduan
                   </h3>
                   <motion.div
@@ -234,7 +234,7 @@ const App = () => {
                       href="mailto:kpu.sekadau@gmail.com"
                       onMouseEnter={() => speakText("Kirim Email")}
                       onTouchStart={() => speakText("Kirim Email")}
-                      className="flex shine-btn items-center gap-3 py-3 px-4 bg-red-600 text-white rounded-xl shadow"
+                      className="flex shine-btn items-center gap-3 py-3 px-4 bg-[#700D09] text-white rounded-xl shadow"
                       variants={buttonVariants}
                       whileHover="hover"
                       whileTap="tap"
@@ -246,7 +246,7 @@ const App = () => {
                       onClick={() => setActiveModal("whatsapp")}
                       onTouchStart={() => speakText("Call Center WhatsApp")}
                       onMouseEnter={() => speakText("Call Center WhatsApp")}
-                      className="flex shine-btn items-center gap-3 py-3 px-4 bg-red-600 text-white rounded-xl shadow"
+                      className="flex shine-btn items-center gap-3 py-3 px-4 bg-[#700D09] text-white rounded-xl shadow"
                       variants={buttonVariants}
                       whileHover="hover"
                       whileTap="tap"
@@ -260,7 +260,7 @@ const App = () => {
               {/* WhatsApp Input */}
               {activeModal === "whatsapp" && (
                 <>
-                  <h3 className="text-xl font-bold mb-4 text-red-600">Pesan</h3>
+                  <h3 className="text-xl font-bold mb-4 text-[#700D09]">Pesan</h3>
                   <textarea
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
@@ -272,7 +272,7 @@ const App = () => {
                     onClick={handleSendWhatsApp}
                     onMouseEnter={() => speakText("Kirim Pesan")}
                     onTouchStart={() => speakText("Kirim Pesan")}
-                    className="w-full py-3 px-4 bg-red-600 text-white font-medium rounded-xl shadow-md"
+                    className="w-full py-3 px-4 bg-[#700D09] text-white font-medium rounded-xl shadow-md"
                     variants={buttonVariants}
                     whileHover="hover"
                     whileTap="tap"
@@ -285,7 +285,7 @@ const App = () => {
               {/* Modal Berita */}
               {activeModal === "berita" && (
                 <>
-                  <h3 className="text-xl font-bold mb-4 text-red-600 text-center">
+                  <h3 className="text-xl font-bold mb-4 text-[#700D09] text-center">
                     Berita
                   </h3>
                   <motion.div
@@ -323,7 +323,7 @@ const App = () => {
                         rel="noopener noreferrer"
                         onMouseEnter={() => speakText(item.text)}
                         onTouchStart={() => speakText(item.text)}
-                        className="flex  shine-btn items-center gap-3 py-3 px-4 bg-red-600 text-white rounded-xl shadow"
+                        className="flex  shine-btn items-center gap-3 py-3 px-4 bg-[#700D09] text-white rounded-xl shadow"
                         variants={buttonVariants}
                         whileHover="hover"
                         whileTap="tap"
@@ -341,7 +341,7 @@ const App = () => {
               {/* Media Sosial */}
               {activeModal === "social" && (
                 <>
-                  <h3 className="text-xl font-bold mb-4 text-red-600 text-center">
+                  <h3 className="text-xl font-bold mb-4 text-[#700D09] text-center">
                     Media Sosial
                   </h3>
                   <motion.div
@@ -377,7 +377,7 @@ const App = () => {
                         rel="noopener noreferrer"
                         onMouseEnter={() => speakText(item.text)}
                         onTouchStart={() => speakText(item.text)}
-                        className="flex shine-btn items-center gap-3 py-3 px-4 bg-red-600 text-white rounded-xl shadow"
+                        className="flex shine-btn items-center gap-3 py-3 px-4 bg-[#700D09] text-white rounded-xl shadow"
                         variants={buttonVariants}
                         whileHover="hover"
                         whileTap="tap"
@@ -392,7 +392,7 @@ const App = () => {
               {/* Hukum */}
               {activeModal === "hukum" && (
                 <>
-                  <h3 className="text-xl font-bold mb-4 text-red-600 text-center">
+                  <h3 className="text-xl font-bold mb-4 text-[#700D09] text-center">
                     Informasi Hukum
                   </h3>
                   <motion.div
@@ -413,7 +413,7 @@ const App = () => {
                         rel="noopener noreferrer"
                         onMouseEnter={() => speakText(item.text)}
                         onTouchStart={() => speakText(item.text)}
-                        className="flex shine-btn items-center gap-3 py-3 px-4 bg-red-600 text-white rounded-xl shadow"
+                        className="flex shine-btn items-center gap-3 py-3 px-4 bg-[#700D09] text-white rounded-xl shadow"
                         variants={buttonVariants}
                         whileHover="hover"
                         whileTap="tap"
@@ -439,7 +439,7 @@ const App = () => {
   {/* Tombol Utama */}
   <button
     onClick={() => setSettingsOpen(!settingsOpen)}
-    className="p-4 rounded-full bg-red-600 text-white shadow-lg hover:scale-105 transition"
+    className="p-4 rounded-full bg-[#700D09] text-white shadow-lg hover:scale-105 transition"
   >
     {accessibilityOn ? <FaVolumeUp /> : <FaVolumeMute />}
   </button>
@@ -464,7 +464,7 @@ const App = () => {
           {/* Tombol Close */}
           <button
             onClick={() => setSettingsOpen(false)}
-            className="absolute top-2 right-3 text-gray-500 hover:text-red-600 hover:scale-110 transition text-lg"
+            className="absolute top-2 right-3 text-gray-500 hover:text-[#700D09] hover:scale-110 transition text-lg"
           >
             ✕
           </button>
@@ -477,7 +477,7 @@ const App = () => {
               onClick={() => setAccessibilityOn(!accessibilityOn)}
               className={`px-3 py-1 rounded-full text-sm ${
                 accessibilityOn
-                  ? "bg-red-600 text-white"
+                  ? "bg-[#700D09] text-white"
                   : "bg-gray-300 text-black"
               }`}
             >
