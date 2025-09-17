@@ -10,7 +10,7 @@ const Berita = ({ accessibilityOn }) => {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const res = await fetch("http://clouds.mystorages.my.id/berita.php");
+        const res = await fetch("https://clouds.mystorages.my.id/berita.php");
         const data = await res.json();
         setBerita(data && data.length ? data : []);
       } catch (error) {
