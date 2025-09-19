@@ -243,6 +243,17 @@ const App = () => {
                     >
                       <FaEnvelope /> <span>Email</span>
                     </motion.a>
+                    <motion.a
+                      href="https://sekadaukabppid.kpu.go.id"
+
+                      onTouchStart={() => speakText("Form Pengaduan")}
+                      className="flex shine-btn items-center gap-3 py-3 px-4 bg-[#700D09] text-white rounded-xl shadow"
+                      variants={buttonVariants}
+                      whileHover="hover"
+                      whileTap="tap"
+                    >
+                      <FaRegPaperPlane /> <span>Form Pengaduan</span>
+                    </motion.a>
 
                     <motion.button
                       onClick={() => setActiveModal("whatsapp")}
